@@ -41,8 +41,8 @@ class Term
 	{
 		while (this.progress < this.input.length)
 		{
-			this.stack.push(this.lookup())
-			this.progress++
+			this.stack.push (this.lookup())
+			this.progress ++
 		}
 		var stack = this.stack
 		this.stack = []
@@ -75,24 +75,40 @@ class Query
 		if (this.quantifiers[0][1] == "A")
 		{
 			var count = 0
+			var replaceThis = this.quantifiers [0][0]
 			var result = true
 			while (count < limit && result == true)
 			{
+				var newInput = this.term.input.map (function (variable)
+				{ return item == replaceThis ? count : variable; })
 				var subQuery = new Query
-				(this.quantifiers.slice(1), this.limit, this.term)
-				result && subQuery.evaluate()
+				(
+					this.quantifiers.slice(1),
+					this.limit,
+					new Term (newInput, this.term.micma)
+				)
+				result = result && subQuery.evaluate ()
+				count ++
 			}
 			return result
 		}
-		if (this.quantifiers[0][1] == "A")
+		if (this.quantifiers [0][1] == "E")
 		{
 			var count = 0
+			var replaceThis = this.quantifiers [0][0]
 			var result = false
 			while (count < limit && result == false)
 			{
+				var newInput = this.term.input.map (function (variable)
+				{ return item == replaceThis ? count : variable; })
 				var subQuery = new Query
-				(this.quantifiers.slice(1), this.limit, this.term)
-				result || subQuery.evaluate()
+				(
+					this.quantifiers.slice(1),
+					this.limit,
+					new Term (newInput, this.term.micma)
+				)
+				result = result || subQuery.evaluate ()
+				count ++
 			}
 			return result
 		}
