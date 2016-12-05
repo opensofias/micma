@@ -1,0 +1,61 @@
+body
+{
+	font-size: 16pt;
+	font-family: "Source Serif Pro", "Computer Modern", Times, "Times New Roman", serif;
+	margin: 1em 1em 4em 1em;
+}
+
+h1
+{
+	text-align: right;
+	position: fixed;
+	right: .5em;
+	bottom: .5em;
+	margin: 0;
+	font-weight: 300;
+	font-size: 2em;
+	opacity: .5;
+}
+
+.magma
+{
+	display: flex;
+	flex-wrap: wrap;
+	margin-bottom: .5em;
+	padding-bottom: .5em;
+	border-bottom: 4pt solid #c0c0c0;
+}
+
+.operator th, .operator tr
+{
+
+	font-size: 16pt;
+}
+
+.operator
+{
+	margin-right: 1em;
+}
+
+.elements ol
+{
+	width: 100%;
+	list-style-type: none;
+	padding: 0;
+	margin: 0 0 1em 0;
+	display: flex;
+}
+
+.elements .new
+{
+	background-color: #e0fff0;
+}
+
+.operator th, .operator tr, .elements li
+{
+	padding: .125em;
+	text-align: center;
+	height:1em;
+	min-width:1em;
+}
+
