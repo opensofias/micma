@@ -68,11 +68,13 @@ function isAssociative (micma, op, limit)
 
 function commTest ()
 {
-	alert (isCommutative (MinMax4(), "&", 4)) 
-	alert (isCommutative (RockPaperScizzors(), "W", 3))
-	alert (isCommutative (Imply()), ">", 2)
+	return [
+		isCommutative (MinMax4(), "&", 4), 
+		isCommutative (RockPaperScizzors(), "W", 3),
+		isCommutative (Imply(), ">", 2),
 
-	alert (isAssociative (MinMax4(), "&", 4)) 
-	alert (isAssociative  (RockPaperScizzors(), "W", 3))
-	alert (isAssociative  (Imply()), ">", 2)
+		isAssociative (MinMax4(), "&", 4),
+		isAssociative (RockPaperScizzors(), "W", 3),
+		isAssociative (Imply(), ">", 2)
+	]
 }
