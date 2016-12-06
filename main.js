@@ -30,7 +30,7 @@ class Term
 	lookup (currentItem = this.input [this.progress], currentLut = this.lut)
 	{
 		if (Array.isArray (currentLut [currentItem]))
-			return this.lookup (this.stack.pop(), currentLut [currentItem])
+			return this.lookup (this.stack.pop (), currentLut [currentItem])
 		else if (currentItem in currentLut)
 			return (currentLut [currentItem])
 		else
@@ -51,12 +51,18 @@ class Term
 
 	isEqual ()
 	{
-		var stack = evaluate()
+		var stack = this.evaluate()
 		var result = true
 		for (var element of stack)
 			result = result && stack[0] == element
 		return result
 	}
+}
+
+class Relation
+{
+	constructor ()
+	{}
 }
 
 class Query
@@ -77,13 +83,13 @@ class Query
 			var count = 0
 			var replaceThis = this.quantifiers [0][0]
 			var result = true
-			while (count < limit && result == true)
+			while (count < this.limit && result == true)
 			{
 				var newInput = this.term.input.map (function (variable)
-				{ return item == replaceThis ? count : variable; })
+				{ return variable == replaceThis ? count : variable; })
 				var subQuery = new Query
 				(
-					this.quantifiers.slice(1),
+					this.quantifiers.slice (1),
 					this.limit,
 					new Term (newInput, this.term.micma)
 				)
@@ -97,13 +103,13 @@ class Query
 			var count = 0
 			var replaceThis = this.quantifiers [0][0]
 			var result = false
-			while (count < limit && result == false)
+			while (count < this.limit && result == false)
 			{
 				var newInput = this.term.input.map (function (variable)
 				{ return item == replaceThis ? count : variable; })
 				var subQuery = new Query
 				(
-					this.quantifiers.slice(1),
+					this.quantifiers.slice (1),
 					this.limit,
 					new Term (newInput, this.term.micma)
 				)
@@ -112,11 +118,10 @@ class Query
 			}
 			return result
 		}
-
-
-
 	}
+}
 
-	
+class Generator
+{
 
 }
