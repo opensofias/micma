@@ -21,7 +21,7 @@ function RockPaperScizzors ()
 	var a = new Micma ()
 	{
 		a.lut ["W"] = [[0,1,0],[1,1,2],[0,2,2]]
-		a.lut ["L"] = [[0,0,2],[0,1,1],[0,2,2]]
+		a.lut ["L"] = [[0,0,2],[0,1,1],[2,1,2]]
 	}
 	return a
 }
@@ -45,6 +45,15 @@ function NAND ()
 	return a
 }
 
+function plusMod4 ()
+{
+	var a = new Micma ()
+	{
+		a.lut["+"] = [[0,1,2,3],[1,2,3,0],[2,3,0,1],[3,0,1,2]]
+	}
+	return a
+}
+
 function gf2test ()
 {
 	var gf2 = GF2 ()
@@ -59,7 +68,8 @@ function underflowTest ()  //does strange things, not sure if i care
 	var preterm = [1,"+"]
 	var term = new Term (preterm,gf2)
 	return term.evaluate ()
-}	
+}
+
 
 function isCommutative (micma, op, limit)
 {
@@ -82,12 +92,28 @@ function isIdempotent (micma, op, limit)
 	return query.evaluate ()
 }
 
+function isLeftLatin (micma, op, limit)
+{
+	var term = new Term (["a","b",op,"c"])
+	var query = new Query (["aA","cA","bE"], limit, term)
+	return query.evaluate ()
+}
+
+function isRightLatin (micma, op, limit)
+{
+	var term = new Term (["a","b",op,"c"])
+	var query = new Query (["bA","cA","aE"], limit, term)
+	return query.evaluate ()
+}
+
 function idemElement (micma, op, limit)
 {
 	var term = new Term (["a","a",op,"a"], micma)
 	var query = new Query (["aE","bE"], limit, term)
 	return query.evaluate ()
 }
+
+
 
 function commTest ()
 {
