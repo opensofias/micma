@@ -107,7 +107,7 @@ class Query
 			while (count < this.limit && !result)
 			{
 				var newInput = this.term.input.map (function (variable)
-				{ return item == replaceThis ? count : variable; })
+				{ return variable == replaceThis ? count : variable; })
 				var subQuery = new Query
 				(
 					this.quantifiers.slice (1),

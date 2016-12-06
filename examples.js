@@ -66,6 +66,20 @@ function isAssociative (micma, op, limit)
 	return query.evaluate ()
 }
 
+function isIdempotent (micma, op, limit)
+{
+	var term = new Term (["a","a",op,"a"], micma)
+	var query = new Query (["aA","bA"], limit, term)
+	return query.evaluate ()
+}
+
+function idemElement (micma, op, limit)
+{
+	var term = new Term (["a","a",op,"a"], micma)
+	var query = new Query (["aE","bE"], limit, term)
+	return query.evaluate ()
+}
+
 function commTest ()
 {
 	return [
@@ -75,6 +89,14 @@ function commTest ()
 
 		isAssociative (MinMax4(), "&", 4),
 		isAssociative (RockPaperScizzors(), "W", 3),
-		isAssociative (Imply(), ">", 2)
+		isAssociative (Imply(), ">", 2),
+		
+		isIdempotent (MinMax4(), "&", 4),
+		isIdempotent (RockPaperScizzors(), "W", 3),
+		isIdempotent (Imply(), ">", 2),
+
+		idemElement (MinMax4(), "&", 4),
+		idemElement (RockPaperScizzors(), "W", 3),
+		idemElement (Imply(), ">", 2)
 	]
 }
