@@ -23,6 +23,7 @@ function RockPaperScizzors ()
 		a.lut ["W"] = [[0,1,0],[1,1,2],[0,2,2]]
 		a.lut ["L"] = [[0,0,2],[0,1,1],[0,2,2]]
 	}
+	return a
 }
 
 function Imply ()
@@ -32,6 +33,7 @@ function Imply ()
 		a.lut["<"] = [[1,0],[1,1]]
 		a.lut[">"] = [[1,1],[0,1]]
 	}
+	return a
 }
 
 function gf2test ()
@@ -47,22 +49,21 @@ function underflowTest ()  //does strange things, not sure if i care
 	var gf2 = GF2 ()
 	var preterm = [1,"+"]
 	var term = new Term (preterm,gf2)
-	term.evaluate()
-	return term.stack
-}
+	return term.evaluate ()
+}	
 
 function isCommutative (micma, op, limit)
 {
 	var term = new Term (["a","b",op,"b","a",op], micma)
-	var query = new Query(["aA","bA"], limit, term)
-	return query.evaluate()
+	var query = new Query (["aA","bA"], limit, term)
+	return query.evaluate ()
 }
 
 function isAssociative (micma, op, limit)
 {
 	var term = new Term (["a","b","c",op,op,"a","b",op,"c",op], micma)
-	var query = new Query(["aA","bA", "cA"], limit, term)
-	return query.evaluate()
+	var query = new Query (["aA","bA","cA"], limit, term)
+	return query.evaluate ()
 }
 
 function commTest ()

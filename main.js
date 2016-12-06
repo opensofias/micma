@@ -23,6 +23,7 @@ class Term
 	{
 		this.input = input
 		this.lut = micma.lut
+		this.micma = micma
 		this.progress = 0
 		this.stack = []
 	}
