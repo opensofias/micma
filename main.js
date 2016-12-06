@@ -82,9 +82,9 @@ class Query
 		if (this.quantifiers[0][1] == "A")
 		{
 			var count = 0
-			var replaceThis = this.quantifiers [0][0]
+			const replaceThis = this.quantifiers [0][0]
 			var result = true
-			while (count < this.limit && result == true)
+			while (count < this.limit && result)
 			{
 				var newInput = this.term.input.map (function (variable)
 				{ return variable == replaceThis ? count : variable; })
@@ -94,7 +94,7 @@ class Query
 					this.limit,
 					new Term (newInput, this.term.micma)
 				)
-				result = result && subQuery.evaluate ()
+				result = subQuery.evaluate ()
 				count ++
 			}
 			return result
@@ -102,9 +102,9 @@ class Query
 		if (this.quantifiers [0][1] == "E")
 		{
 			var count = 0
-			var replaceThis = this.quantifiers [0][0]
+			const replaceThis = this.quantifiers [0][0]
 			var result = false
-			while (count < this.limit && result == false)
+			while (count < this.limit && !result)
 			{
 				var newInput = this.term.input.map (function (variable)
 				{ return item == replaceThis ? count : variable; })
@@ -114,7 +114,7 @@ class Query
 					this.limit,
 					new Term (newInput, this.term.micma)
 				)
-				result = result || subQuery.evaluate ()
+				result = subQuery.evaluate ()
 				count ++
 			}
 			return result
