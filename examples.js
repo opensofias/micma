@@ -70,7 +70,6 @@ function underflowTest ()  //does strange things, not sure if i care
 	return term.evaluate ()
 }
 
-
 function isCommutative (micma, op, limit)
 {
 	var term = new Term (["a","b",op,"b","a",op], micma)

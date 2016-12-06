@@ -1,4 +1,4 @@
-class Micma
+class Micma // i should perhaps rename this to something
 {
 	constructor (lut = [])
 	{
@@ -60,13 +60,13 @@ class Term
 	}
 }
 
-class Relation
+class Relation // equations probably won't cut it forever
 {
 	constructor ()
 	{}
 }
 
-class Query
+class Query // checks if properties apply
 {
 	constructor (quantifiers = [], limit = 0, term = new Term ())
 	{
@@ -122,7 +122,10 @@ class Query
 	}
 }
 
-class Generator
+class Generator // generate new migma where queried properties apply
 {
+	constructor (queries = [], limit = 0)
+	{
 
+	}
 }
