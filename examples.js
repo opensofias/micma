@@ -36,6 +36,15 @@ function Imply ()
 	return a
 }
 
+function NAND ()
+{
+	var a = new Micma ()
+	{
+		a.lut["NAND"] = [[1,1],[1,0]]
+	}
+	return a
+}
+
 function gf2test ()
 {
 	var gf2 = GF2 ()
@@ -86,17 +95,21 @@ function commTest ()
 		isCommutative (MinMax4(), "&", 4), 
 		isCommutative (RockPaperScizzors(), "W", 3),
 		isCommutative (Imply(), ">", 2),
+		isCommutative (NAND(), "NAND", 2),
 
 		isAssociative (MinMax4(), "&", 4),
 		isAssociative (RockPaperScizzors(), "W", 3),
 		isAssociative (Imply(), ">", 2),
+		isAssociative (NAND(), "NAND", 2),
 		
 		isIdempotent (MinMax4(), "&", 4),
 		isIdempotent (RockPaperScizzors(), "W", 3),
 		isIdempotent (Imply(), ">", 2),
+		isIdempotent (NAND(), "NAND", 2),
 
 		idemElement (MinMax4(), "&", 4),
 		idemElement (RockPaperScizzors(), "W", 3),
-		idemElement (Imply(), ">", 2)
+		idemElement (Imply(), ">", 2),
+		idemElement (NAND(), "NAND", 2),
 	]
 }
