@@ -1,10 +1,18 @@
 class Micma // i should perhaps rename this to something else
 {
 	constructor (lut = [], limit = 0, ops = [])
+	{ this.lut = lut; this.limit = limit; this.ops = ops }
+
+	static opFromString (symbol, opString, separators)
 	{
-		this.lut = lut
-		this.limit = limit
-		this.ops = ops
+		opLut = []
+
+		function splitRecursive (array, splitString, separators)
+		{
+			array.push (splitRecursive()) // todo: make it make sense
+		}
+
+		
 	}
 
 	depth (current)
@@ -23,11 +31,8 @@ class Term
 {
 	constructor (input = [], micma = new Micma ())
 	{
-		this.input = input
-		this.lut = micma.lut
-		this.micma = micma
-		this.progress = 0
-		this.stack = []
+		this.input = input; this.lut = micma.lut; this.micma = micma
+		this.progress = 0; this.stack = []
 	}
 
 	static fromString (termString = "", separator = "", micma = new Micma ())
@@ -75,10 +80,12 @@ class Query // checks if properties apply
 {
 	constructor (quantifiers = [], limit = 0, term = new Term ())
 	{
-		this.quantifiers = quantifiers
-		this.limit = limit
+		this.quantifiers = quantifiers; this.limit = limit
 		this.term = term
 	}
+
+	static fromString (quantifiersString = "", limit = 0, term = new Term ())
+	{ return new Query (quantifiersString.match(/.{2}/g), limit, term) }
 
 	evaluate ()
 	{
