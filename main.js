@@ -1,8 +1,10 @@
-class Micma // i should perhaps rename this to something
+class Micma // i should perhaps rename this to something else
 {
-	constructor (lut = [])
+	constructor (lut = [], limit = 0, ops = [])
 	{
 		this.lut = lut
+		this.limit = limit
+		this.ops = ops
 	}
 
 	depth (current)
@@ -27,6 +29,9 @@ class Term
 		this.progress = 0
 		this.stack = []
 	}
+
+	static fromString (termString = "", separator = "", micma = new Micma ())
+	{ return new Term (termString.split(separator), micma) }
 
 	lookup (currentItem = this.input [this.progress], currentLut = this.lut)
 	{

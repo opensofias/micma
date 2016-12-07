@@ -6,6 +6,14 @@ function GF2 ()
 	return a
 }
 
+function GF3 ()
+{
+	var a = new Micma ()
+	a.lut["*"] = [[0,0,0],[0,1,2],[0,2,1]]
+	a.lut["+"] = [[0,1,2],[1,2,0],[2,0,1]]
+	return a
+}
+
 function MinMax4 ()
 {
 	var a = new Micma ()
@@ -103,6 +111,11 @@ function isRightLatin (micma, op, limit)
 	var term = new Term (["a","b",op,"c"])
 	var query = new Query (["bA","cA","aE"], limit, term)
 	return query.evaluate ()
+}
+
+function leftDistributes (micma, op1, op2, limit)
+{
+	
 }
 
 function idemElement (micma, op, limit)
