@@ -115,7 +115,8 @@ function isRightLatin (micma, op, limit)
 
 function leftDistributes (micma, op1, op2, limit)
 {
-	
+	var term = new Term (["a","b",op1,"c",op2,"a","c",op2,"b","c",op2,op1])
+	var query = new Query (["aA","bA","cA"], limit, term)
 }
 
 function idemElement (micma, op, limit)
