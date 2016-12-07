@@ -5,14 +5,17 @@ class Micma // i should perhaps rename this to something else
 
 	static opFromString (symbol, opString, separators)
 	{
-		opLut = []
-
-		function splitRecursive (array, splitString, separators)
-		{
-			array.push (splitRecursive()) // todo: make it make sense
-		}
-
+		var depth = 0;
 		
+		function splitRecursive (splitString, separators, depth)
+		{
+			var array = []
+
+			for (substring of splitString.split (separators [depht + 1]))
+				array.push( splitRecursive(substring) )
+
+			return array
+		}
 	}
 
 	depth (current)
