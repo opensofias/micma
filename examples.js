@@ -1,67 +1,3 @@
-function GF2 ()
-{
-	var a = new Micma ()
-	a.lut["*"] = [[0,0],[0,1]]
-	a.lut["+"] = [[0,1],[1,0]]
-	return a
-}
-
-function GF3 ()
-{
-	var a = new Micma ()
-	a.lut["*"] = [[0,0,0],[0,1,2],[0,2,1]]
-	a.lut["+"] = [[0,1,2],[1,2,0],[2,0,1]]
-	return a
-}
-
-function MinMax4 ()
-{
-	var a = new Micma ()
-	{
-		a.lut ["&"] = [[0,0,0,0],[0,1,1,1],[0,1,2,2],[0,1,2,3]]
-		a.lut ["|"] = [[0,1,2,3],[1,1,2,3],[2,2,2,3],[3,3,3,3]] 
-	}
-	return a
-}
-
-function RockPaperScizzors ()
-{
-	var a = new Micma ()
-	{
-		a.lut ["W"] = [[0,1,0],[1,1,2],[0,2,2]]
-		a.lut ["L"] = [[0,0,2],[0,1,1],[2,1,2]]
-	}
-	return a
-}
-
-function Imply ()
-{
-	var a = new Micma ()
-	{
-		a.lut["<"] = [[1,0],[1,1]]
-		a.lut[">"] = [[1,1],[0,1]]
-	}
-	return a
-}
-
-function NAND ()
-{
-	var a = new Micma ()
-	{
-		a.lut["NAND"] = [[1,1],[1,0]]
-	}
-	return a
-}
-
-function plusMod4 ()
-{
-	var a = new Micma ()
-	{
-		a.lut["+"] = [[0,1,2,3],[1,2,3,0],[2,3,0,1],[3,0,1,2]]
-	}
-	return a
-}
-
 function gf2test ()
 {
 	var gf2 = GF2 ()
@@ -125,8 +61,6 @@ function idemElement (micma, op, limit)
 	var query = new Query (["aE","bE"], limit, term)
 	return query.evaluate ()
 }
-
-
 
 function commTest ()
 {

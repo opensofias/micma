@@ -1,33 +1,41 @@
 class Micma // i should perhaps rename this to something else
 {
-	constructor (lut = [], limit = 0, ops = [])
-	{ this.lut = lut; this.limit = limit; this.ops = ops }
+	constructor (lut = [], ops = [])
+	{ this.lut = lut; this.ops = ops }
 
-	static opFromString (symbol, opString, separators)
+	opFromString (symbol, opString, separators)
 	{
-		var depth = 0;
-		
-		function splitRecursive (splitString, separators, depth)
+		function splitRecursive (splitString, depth)
 		{
 			var array = []
 
-			for (substring of splitString.split (separators [depht + 1]))
-				array.push( splitRecursive(substring) )
+			if (depth < separators.length)
+				for (var substring of splitString.split (separators [depth]))
+					array.push( splitRecursive(substring, depth + 1) )
+			else array.push (splitString)
 
 			return array
 		}
-	}
 
-	depth (current)
-	{
-		if (Array.isArray(current))
-			return this.depth (current [0])
-		else
-			return 0
+		this.lut[symbol] = splitRecursive (opString, 0)
+
+		this.ops.push ()
 	}
 
 	getDepth (symbol)
-	{ return this.depth (this.lut[symbol]) }
+	{ 
+		depth = function (current)
+		{
+			if (Array.isArray(current))
+				return depth (current [0]) + 1
+			else
+				return 0
+		}
+		return depth (this.lut[symbol])
+	}
+
+	getLimit ()
+	{ return this.lut[this.ops[0]].length }
 }
 
 class Term
