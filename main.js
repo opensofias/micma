@@ -98,6 +98,13 @@ class Query // checks if properties apply
 	static fromString (quantifiersString = "", limit = 0, term = new Term ())
 	{ return new Query (quantifiersString.match(/.{2}/g), limit, term) }
 
+	{
+		const lower = "abcdefghijklmnopqrstuvwxyz"
+		const upper = lower.toUpperCase()
+		var count = 0;
+
+	}
+
 	evaluate ()
 	{
 		if (this.quantifiers.length == 0)

@@ -61,7 +61,7 @@ q.list =
 	associative:"aAbAcA:abc**ab*c*",
 	leftLatin:"aAcAbA:ab*c",
 	rightLatin:"bAcAaE:ab*c",
-	leftDistributes:""
+	leftDistributes:"aAbAcA:ab+c*ac*bc*+"
 }
 q.lib = function (name)
 {
