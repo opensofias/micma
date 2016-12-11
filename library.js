@@ -52,16 +52,19 @@ m.lib = function (name)
 q = {}
 q.list =
 {
-	idemElement:"aE:aa*a",
-	leftNeutalElement:"aEbA:ab*b",
-	rightNeutalElement:"bEaA:ab*a",
-	idempotent:"aA:aa*a",
-	commutative:"aAbA:ab*ba*",
-	diagonistic:"aAbA:aa*bb*",
-	associative:"aAbAcA:abc**ab*c*",
-	leftLatin:"aAcAbA:ab*c",
-	rightLatin:"bAcAaE:ab*c",
-	leftDistributes:"aAbAcA:ab+c*ac*bc*+"
+	idemElement:"aa*a",
+	leftNeutalElement:"aB*B",
+	rightNeutalElement:"Ba*B",
+	leftAbsorbingElement:"aB*a",
+	rightAbsorbingElement:"Ba*a",
+	idempotent:"AA*A",
+	commutative:"AB*BA*",
+	diagonistic:"AA*BB*", // i made this term up, don't use!! :P
+	associative:"ABC**AB*C*",
+	leftLatin:"Ac*B",
+	rightLatin:"cA*B",
+	leftDistributive:"AB+C*AC*BC*+",
+	rightDistributive:"ABC+*AB*AC*+"
 }
 q.lib = function (name)
 {
