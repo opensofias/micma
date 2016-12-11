@@ -62,27 +62,4 @@ function idemElement (micma, op, limit)
 	return query.evaluate ()
 }
 
-function commTest ()
-{
-	return [
-		isCommutative (MinMax4(), "&", 4), 
-		isCommutative (RockPaperScizzors(), "W", 3),
-		isCommutative (Imply(), ">", 2),
-		isCommutative (NAND(), "NAND", 2),
-
-		isAssociative (MinMax4(), "&", 4),
-		isAssociative (RockPaperScizzors(), "W", 3),
-		isAssociative (Imply(), ">", 2),
-		isAssociative (NAND(), "NAND", 2),
-		
-		isIdempotent (MinMax4(), "&", 4),
-		isIdempotent (RockPaperScizzors(), "W", 3),
-		isIdempotent (Imply(), ">", 2),
-		isIdempotent (NAND(), "NAND", 2),
-
-		idemElement (MinMax4(), "&", 4),
-		idemElement (RockPaperScizzors(), "W", 3),
-		idemElement (Imply(), ">", 2),
-		idemElement (NAND(), "NAND", 2),
-	]
-}
+// todo: new test-routine

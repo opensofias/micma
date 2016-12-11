@@ -81,11 +81,8 @@ class Term
 	}
 }
 
-class Relation // equations probably won't cut it forever
-{
-	constructor ()
-	{}
-}
+class Relation // todo: equations probably won't cut it forever
+{}
 
 class Query // checks if properties apply
 {
@@ -96,7 +93,7 @@ class Query // checks if properties apply
 	}
 
 	static fromString (quantifiersString = "", limit = 0, term = new Term ())
-	{ return new Query (quantifiersString.match(/.{2}/g), limit, term) }
+	{ return new Query (quantifiersString.match (/.{2}/g), limit, term) }
 
 	static fromPropertyString ()
 	{
@@ -104,7 +101,7 @@ class Query // checks if properties apply
 		const upper = lower.toUpperCase()
 		var count = 0;
 
-		
+		//todo
 	}
 
 	evaluate ()
@@ -154,10 +151,8 @@ class Query // checks if properties apply
 	}
 }
 
-class Generator // generate new migma where queried properties apply
-{
-	constructor (queries = [], limit = 0)
-	{
+class MagmaGenerator //todo: generate magmas with given properties
+{}
 
-	}
-}
+class QueryGenerator //todo: generate properties
+{}
