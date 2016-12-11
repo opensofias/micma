@@ -19,7 +19,7 @@ class Magma // technically a magma has exactly one operation, i have an arbitrar
 
 		this.lut[symbol] = splitRecursive (opString, 0)
 
-		this.ops.push ()
+		this.ops.push (symbol)
 	}
 
 	getDepth (symbol)
