@@ -66,7 +66,5 @@ q.list =
 	leftDistributive:"AB+C*AC*BC*+",
 	rightDistributive:"ABC+*AB*AC*+"
 }
-q.lib = function (name)
-{
-	//todo
-}
+q.lib = function (name, magma)
+{ return (Query.fromPropertyString (q.list[name], magma)) }
