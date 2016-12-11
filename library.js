@@ -53,8 +53,8 @@ q = {}
 q.list =
 {
 	idemElement:"aa*a",
-	leftNeutalElement:"aB*B",
-	rightNeutalElement:"Ba*B",
+	leftNeutralElement:"aB*B",
+	rightNeutralElement:"Ba*B",
 	leftAbsorbingElement:"aB*a",
 	rightAbsorbingElement:"Ba*a",
 	idempotent:"AA*A",
