@@ -36,17 +36,17 @@ m.list =
 
 m.lib = function (name)
 {
-	micma = new Micma ()
+	magma = new Magma ()
 	for (var opString of m.list[name])
 	{
-		micma.opFromString
+		magma.opFromString
 		(
 			opString[0],
 			opString.substring(1),
 			[",",""]
 		)
 	}
-	return micma
+	return magma
 }
 
 q = {}

@@ -1,4 +1,4 @@
-class Micma // i should perhaps rename this to something else
+class Magma // technically a magma has exactly one operation, i have an arbitrary number. oh, well..
 {
 	constructor (lut = [], ops = [])
 	{ this.lut = lut; this.ops = ops }
@@ -11,7 +11,7 @@ class Micma // i should perhaps rename this to something else
 
 			if (depth < separators.length)
 				for (var substring of splitString.split (separators [depth]))
-					array.push( splitRecursive(substring, depth + 1) )
+					array.push (splitRecursive (substring, depth + 1))
 			else array.push (splitString)
 
 			return array
@@ -40,14 +40,14 @@ class Micma // i should perhaps rename this to something else
 
 class Term
 {
-	constructor (input = [], micma = new Micma ())
+	constructor (input = [], magma = new Magma ())
 	{
-		this.input = input; this.lut = micma.lut; this.micma = micma
+		this.input = input; this.lut = magma.lut; this.magma = magma
 		this.progress = 0; this.stack = []
 	}
 
-	static fromString (termString = "", separator = "", micma = new Micma ())
-	{ return new Term (termString.split(separator), micma) }
+	static fromString (termString = "", separator = "", magma = new Magma ())
+	{ return new Term (termString.split(separator), magma) }
 
 	lookup (currentItem = this.input [this.progress], currentLut = this.lut)
 	{
@@ -104,7 +104,7 @@ class Query // checks if properties apply
 		const upper = lower.toUpperCase()
 		var count = 0;
 
-
+		
 	}
 
 	evaluate ()
@@ -124,7 +124,7 @@ class Query // checks if properties apply
 				(
 					this.quantifiers.slice (1),
 					this.limit,
-					new Term (newInput, this.term.micma)
+					new Term (newInput, this.term.magma)
 				)
 				result = subQuery.evaluate ()
 				count ++
@@ -144,7 +144,7 @@ class Query // checks if properties apply
 				(
 					this.quantifiers.slice (1),
 					this.limit,
-					new Term (newInput, this.term.micma)
+					new Term (newInput, this.term.magma)
 				)
 				result = subQuery.evaluate ()
 				count ++
