@@ -99,6 +99,10 @@ class Query // checks if properties apply
 	{
 		const lower = "abcdefghijklmnopqrstuvwxyz"
 		const upper = lower.toUpperCase()
+		
+		propString = propString.replace("*", magma.ops[0])
+		propString = propString.replace("+", magma.ops[1])
+
 		var count = 0;
 		var quantifiers = []
 
@@ -116,7 +120,7 @@ class Query // checks if properties apply
 		(
 			quantifiers,
 			magma.getLimit (),
-			Term.fromString(propString)
+			Term.fromString(propString, magma)
 		)
 
 	}
