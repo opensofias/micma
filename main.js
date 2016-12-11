@@ -95,13 +95,30 @@ class Query // checks if properties apply
 	static fromString (quantifiersString = "", limit = 0, term = new Term ())
 	{ return new Query (quantifiersString.match (/.{2}/g), limit, term) }
 
-	static fromPropertyString ()
+	static fromPropertyString (propString, magma)
 	{
 		const lower = "abcdefghijklmnopqrstuvwxyz"
 		const upper = lower.toUpperCase()
 		var count = 0;
+		var quantifiers = []
 
-		//todo
+		while (count < lower.length)
+		{
+			if (propString.includes (lower[count]))
+				quantifiers.push ("E" + lower[count])
+			else if (propString.includes (upper[count]))
+				quantifiers.push ("E" + lower[count])
+			else break
+			count++
+		}
+
+		return new Query
+		(
+			quantifiers,
+			magma.getLimit (),
+			Term.fromString(propString)
+		)
+
 	}
 
 	evaluate ()
