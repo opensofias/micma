@@ -107,7 +107,7 @@ class Query // checks if properties apply
 			if (propString.includes (lower[count]))
 				quantifiers.push ("E" + lower[count])
 			else if (propString.includes (upper[count]))
-				quantifiers.push ("E" + lower[count])
+				quantifiers.push ("A" + upper[count])
 			else break
 			count++
 		}
