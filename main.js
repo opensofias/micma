@@ -99,9 +99,17 @@ class Query // checks if properties apply
 	{
 		const lower = "abcdefghijklmnopqrstuvwxyz"
 		const upper = lower.toUpperCase()
+		const opSymbols = "*+/-&|%$"
 		
-		propString = propString.replace("*", magma.ops[0])
-		propString = propString.replace("+", magma.ops[1])
+		var opCount = 0
+		while (propString.includes (opSymbols [opCount]))
+		{
+			while (propString.includes (opSymbols [opCount]))
+				propString = propString.replace
+				(opSymbols [opCount], magma.ops[opCount])
+			opCount++
+		}
+
 
 		var count = 0;
 		var quantifiers = []
