@@ -7,14 +7,14 @@ class Magma // technically a magma has exactly one operation, i have an arbitrar
 	{
 		function splitRecursive (splitString, depth)
 		{
-			var array = []
+			var content = []
 
 			if (depth < separators.length)
 				for (var substring of splitString.split (separators [depth]))
-					array.push (splitRecursive (substring, depth + 1))
-			else array.push (Number(splitString))
+					content.push (splitRecursive (substring, depth + 1))
+			else content = Number(splitString)
 
-			return array
+			return content
 		}
 
 		this.lut[symbol] = splitRecursive (opString, 0)
