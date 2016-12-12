@@ -36,7 +36,7 @@ m.list =
 
 m.lib = function (name)
 {
-	magma = new Magma ()
+	var magma = new Magma ()
 	for (var opString of m.list[name])
 	{
 		magma.opFromString
@@ -59,14 +59,38 @@ q.list =
 	rightAbsorbingElement:"Ba*a",
 	idempotent:"AA*A",
 	commutative:"AB*BA*",
-	diagonistic:"AA*BB*", // i made this term up, don't use!! :P
 	associative:"ABC**AB*C*",
 	leftLatin:"Ac*B",
 	rightLatin:"cA*B",
 	leftDistributive:"AB+C*AC*BC*+",
-	rightDistributive:"ABC+*AB*AC*+"
+	rightDistributive:"ABC+*AB*AC*+",
+	leftSelfDistributive:"AB*C*AC*BC**",
+	rightSelfDistributive:"ABC**AB*AC**",
+
+	diagonistic:"AA*BB*", // some terms that i made up :P
+	crossCommutative:"AB*BA+",
+	crossAssociative1:"ABC**AB+C+",
+	crossAssociative2:"ABC++AB*C*",
+	dissociative1: "ABC+*AB*C+",
+	dissociative2: "ABC*+AB+C*"
 }
 q.lib = function (name, magma)
 {
 	return (Query.fromPropertyString (q.list[name], magma))
+}
+
+function checkAllProps ()
+{
+	
+
+	var string = ""
+	for (magma in m.list)
+	{
+		string += magma + ": "
+		for (query in q.list)
+			if (q.lib(query, m.lib(magma)).evaluate())
+				string += query + " "
+		string += "\n"
+	}
+	return string
 }

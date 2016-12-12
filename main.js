@@ -140,7 +140,7 @@ class Query // checks if properties apply
 		{
 			const all_not_ex = this.quantifiers[0][1] == "A"
 			const replaceThis = this.quantifiers [0][0]
-			var count = 0; var result = true
+			var count = 0; var result = all_not_ex
 
 			while (count < this.limit && result == all_not_ex)
 			{
