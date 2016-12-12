@@ -111,8 +111,7 @@ class Query // checks if properties apply
 		}
 
 
-		var count = 0;
-		var quantifiers = []
+		var count = 0; var quantifiers = []
 
 		while (count < lower.length)
 		{
@@ -135,34 +134,16 @@ class Query // checks if properties apply
 
 	evaluate ()
 	{
+
 		if (this.quantifiers.length == 0)
 			return this.term.isEqual ()
-		if (this.quantifiers[0][1] == "A")
+		else
 		{
-			var count = 0
+			const all_not_ex = this.quantifiers[0][1] == "A"
 			const replaceThis = this.quantifiers [0][0]
-			var result = true
-			while (count < this.limit && result)
-			{
-				var newInput = this.term.input.map (function (variable)
-				{ return variable == replaceThis ? count : variable; })
-				var subQuery = new Query
-				(
-					this.quantifiers.slice (1),
-					this.limit,
-					new Term (newInput, this.term.magma)
-				)
-				result = subQuery.evaluate ()
-				count ++
-			}
-			return result
-		}
-		if (this.quantifiers [0][1] == "E")
-		{
-			var count = 0
-			const replaceThis = this.quantifiers [0][0]
-			var result = false
-			while (count < this.limit && !result)
+			var count = 0; var result = true
+
+			while (count < this.limit && result == all_not_ex)
 			{
 				var newInput = this.term.input.map (function (variable)
 				{ return variable == replaceThis ? count : variable; })
