@@ -12,7 +12,7 @@ class Magma // technically a magma has exactly one operation, i have an arbitrar
 			if (depth < separators.length)
 				for (var substring of splitString.split (separators [depth]))
 					array.push (splitRecursive (substring, depth + 1))
-			else array.push (splitString)
+			else array.push (Number(splitString))
 
 			return array
 		}
