@@ -46,7 +46,7 @@ class Term
 		this.progress = 0; this.stack = []
 	}
 
-	static fromString (termString = "", separator = "", magma = new Magma ())
+	static fromString (termString = "", magma = new Magma (), separator = "")
 	{ return new Term (termString.split(separator), magma) }
 
 	lookup (currentItem = this.input [this.progress], currentLut = this.lut)
@@ -110,24 +110,23 @@ class Query // checks if properties apply
 			opCount++
 		}
 
+		var quanifierCount = 0; var quantifiers = []
 
-		var count = 0; var quantifiers = []
-
-		while (count < lower.length)
+		while (quanifierCount < lower.length)
 		{
-			if (propString.includes (lower[count]))
-				quantifiers.push (lower[count] + "E")
-			else if (propString.includes (upper[count]))
-				quantifiers.push (upper[count] + "A")
+			if (propString.includes (lower[quanifierCount]))
+				quantifiers.push (lower[quanifierCount] + "E")
+			else if (propString.includes (upper[quanifierCount]))
+				quantifiers.push (upper[quanifierCount] + "A")
 			else break
-			count++
+			quanifierCount++
 		}
 
 		return new Query
 		(
 			quantifiers,
 			magma.getLimit (),
-			Term.fromString(propString, magma)
+			Term.fromString(propString, magma, "")
 		)
 
 	}
