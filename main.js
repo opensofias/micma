@@ -79,6 +79,14 @@ class Term
 			result = result && stack[0] == element
 		return result
 	}
+
+	generate (depht, energy, ops)
+	{
+		var terms = [[0, 1]]
+		
+
+
+	}
 }
 
 class Relation // todo: equations probably won't cut it forever

@@ -31,7 +31,8 @@ m.list =
 	Imply: ["→10,11","←11,01"],
 	Inhibit: ["<01,00",">00,10"],
 	NandNor: ["⊼11,10","⊽10,00"],
-	EqNeq: ["~10,01","≁01,10"]
+	EqNeq: ["~10,01","≁01,10"],
+	LeftRight: ["L0000,1111,2222,3333","R0123,0123,0123,0123"],
 }
 
 m.lib = function (name)
@@ -52,7 +53,7 @@ m.lib = function (name)
 q = {}
 q.list =
 {
-	idemElement:"aa*a",
+	
 	leftNeutralElement:"aB*B",
 	rightNeutralElement:"Ba*B",
 	leftAbsorbingElement:"aB*a",
@@ -66,13 +67,31 @@ q.list =
 	rightDistributive:"ABC+*AB*AC*+",
 	leftSelfDistributive:"AB*C*AC*BC**",
 	rightSelfDistributive:"ABC**AB*AC**",
+	leftAlternative:"AAB**AA*B*",
+	rightAlternative:"ABB**AB*B*",
+	flexible:"ABA**AB*A*",
 
 	diagonistic:"AA*BB*", // some terms that i made up :P
+	idemElement:"aa*a",
 	crossCommutative:"AB*BA+",
 	crossAssociative1:"ABC**AB+C+",
 	crossAssociative2:"ABC++AB*C*",
+	rotary1:"ABC**BCA**",
+	reversly1:"ABC**CAB**",
+	reversly2:"AB*C*CA*B*",
 	dissociative1: "ABC+*AB*C+",
-	dissociative2: "ABC*+AB+C*"
+	dissociative2: "ABC*+AB+C*",
+	dissociative3: "ABC+*AB+C*",
+	dissociative4: "ABC*+AB*C+",
+	transmissive1: "AAB**AB*B*",
+	transmissive2: "AA*B*ABB**",
+	leftLeftAbsorbing: "AAB**A",
+	leftLeftNeutral: "AAB*B",
+	leftRightAbsorbing:"AB*A*A",
+	leftRightNeutral:"AB*A*B",
+	twisty:"AAB**BA*",
+	rightHungry:"ABC**AC*",
+	leftHungry:"AB*C*AC*"
 }
 q.lib = function (name, magma)
 {
@@ -88,7 +107,7 @@ function checkAllProps ()
 	{
 		string += magma + ": "
 		for (query in q.list)
-			if (q.lib(query, m.lib(magma)).evaluate())
+			if (q.lib (query, m.lib (magma)).evaluate())
 				string += query + " "
 		string += "\n"
 	}
