@@ -12,7 +12,7 @@ class Magma // technically a magma has exactly one operation, i have an arbitrar
 			if (depth < separators.length)
 				for (var substring of splitString.split (separators [depth]))
 					content.push (splitRecursive (substring, depth + 1))
-			else content = Number(splitString)
+			else content = splitString
 
 			return content
 		}
@@ -20,6 +20,54 @@ class Magma // technically a magma has exactly one operation, i have an arbitrar
 		this.lut[symbol] = splitRecursive (opString, 0)
 
 		this.ops.push (symbol)
+	}
+
+	static generateBinary (limit = 3)
+	{
+		var result = []
+		const cellNum = Math.pow(limit,2)
+		const total = Math.pow(limit, cellNum)
+		
+		var magmaCount = 0
+
+		while (magmaCount < total)
+		{
+			var op = []
+
+			var cellCount = 0
+			while (cellCount < cellNum)
+			{
+				if (! op [Math.floor (cellCount / limit)]) op [Math.floor(cellCount / limit)] = [] 
+				
+				op [Math.floor (cellCount / limit)] [cellCount % limit] = 
+				Math.floor ((magmaCount / Math.pow (limit, cellCount)) % limit)
+				cellCount++
+			}
+
+			result.push(new Magma ({"!":op}, ["!"]))
+			magmaCount++
+		}
+
+		return result
+	}
+
+	static filter (inputMagmas = [], propertyList = [])
+	{
+		if (propertyList.length == 0) return inputMagmas
+		
+		var result = []
+		
+		for (var magma of inputMagmas)
+		{
+			var query = Query.fromPropertyString(propertyList[0], magma)
+			
+			//query.magma = magma
+
+			if (query.evaluate ()) result.push (magma)
+		}
+
+		return Magma.filter (result, propertyList.splice (1))
+		
 	}
 
 	getDepth (symbol)

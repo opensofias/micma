@@ -71,7 +71,8 @@ q.list =
 	rightAlternative:"ABB**AB*B*",
 	flexible:"ABA**AB*A*",
 
-	diagonistic:"AA*BB*", // some terms that i made up :P
+	// some words that i made up :P
+	diagonistic:"AA*BB*",
 	idemElement:"aa*a",
 	crossCommutative:"AB*BA+",
 	crossAssociative1:"ABC**AB+C+",
