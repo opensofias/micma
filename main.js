@@ -32,7 +32,7 @@ class Magma // technically a magma has exactly one operation, i have an arbitrar
 
 		while (magmaCount < total)
 		{
-			result.push (binaryOpFromNumber (magmaCount, limit))
+			result.push (Magma.binaryOpFromNumber (magmaCount, limit))
 			magmaCount++
 		}
 
@@ -52,11 +52,11 @@ class Magma // technically a magma has exactly one operation, i have an arbitrar
 			if (! op [Math.floor (cellCount / limit)]) op [Math.floor(cellCount / limit)] = []
 				
 			op [Math.floor (cellCount / limit)] [cellCount % limit] = 
-			Math.floor ((magmaCount / Math.pow (limit, cellCount)) % limit)
+			Math.floor ((magmaNumber / Math.pow (limit, cellCount)) % limit)
 			cellCount++
 		}
 
-		return new Magma ({symbol:op}, [symbol])
+		return new Magma ({"!":op}, ["!"])
 		
 	}
 

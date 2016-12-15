@@ -2,7 +2,7 @@
 
 function showAll (properties = [], elements = 3)
 {
-	magmas = Magma.filter (Magma.generateBinary (elements), properties.slice())
+	magmas = Magma.filter (Magma.allBinaryOps (elements), properties.slice())
 	container = document.createElement("section")
 	container.className = "magma"
 	var header = document.createElement("h2")
