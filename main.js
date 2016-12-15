@@ -22,33 +22,42 @@ class Magma // technically a magma has exactly one operation, i have an arbitrar
 		this.ops.push (symbol)
 	}
 
-	static generateBinary (limit = 3)
+	static allBinaryOps (limit = 3)
 	{
 		var result = []
-		const cellNum = Math.pow(limit,2)
-		const total = Math.pow(limit, cellNum)
+		
+		const total = Math.pow(limit, Math.pow(limit,2))
 		
 		var magmaCount = 0
 
 		while (magmaCount < total)
 		{
-			var op = []
-
-			var cellCount = 0
-			while (cellCount < cellNum)
-			{
-				if (! op [Math.floor (cellCount / limit)]) op [Math.floor(cellCount / limit)] = [] 
-				
-				op [Math.floor (cellCount / limit)] [cellCount % limit] = 
-				Math.floor ((magmaCount / Math.pow (limit, cellCount)) % limit)
-				cellCount++
-			}
-
-			result.push(new Magma ({"!":op}, ["!"]))
+			result.push (binaryOpFromNumber (magmaCount, limit))
 			magmaCount++
 		}
 
 		return result
+	}
+
+	static binaryOpFromNumber (magmaNumber, limit = 3, symbol = "!")
+	{
+		var op = []
+
+		var cellCount = 0
+
+		const cellNum = Math.pow(limit,2)
+
+		while (cellCount < cellNum)
+		{
+			if (! op [Math.floor (cellCount / limit)]) op [Math.floor(cellCount / limit)] = []
+				
+			op [Math.floor (cellCount / limit)] [cellCount % limit] = 
+			Math.floor ((magmaCount / Math.pow (limit, cellCount)) % limit)
+			cellCount++
+		}
+
+		return new Magma ({symbol:op}, [symbol])
+		
 	}
 
 	static filter (inputMagmas = [], propertyList = [])
@@ -84,6 +93,32 @@ class Magma // technically a magma has exactly one operation, i have an arbitrar
 
 	getLimit ()
 	{ return this.lut[this.ops[0]].length }
+
+	opToTable (op = this.ops[0])
+	{
+		var array = []
+		for (var entry of this.lut[op])
+			array.push (entry.join(""))
+		return array.join("\n")
+	}
+
+	opToHTMLTable (op = this.ops[0])
+	{
+		var table = document.createElement("table")
+		for (var row of this.lut[op])
+		{
+			var tr = document.createElement ("tr")
+			for (var cell of row)
+			{
+				var td = document.createElement ("td")
+				td.innerHTML = cell
+				tr.append(td)
+			}
+			table.append(tr)
+		}
+		table.className = "operator"
+		return table
+	}
 }
 
 class Term

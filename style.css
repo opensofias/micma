@@ -17,6 +17,9 @@ h1
 	opacity: .5;
 }
 
+h2 { width : 100% }
+
+
 .magma
 {
 	display: flex;
@@ -28,13 +31,13 @@ h1
 
 .operator th, .operator tr
 {
-
 	font-size: 16pt;
 }
 
 .operator
 {
 	margin-right: 1em;
+	margin-bottom: 1em;
 }
 
 .elements ol
@@ -51,7 +54,7 @@ h1
 	background-color: #e0fff0;
 }
 
-.operator th, .operator tr, .elements li
+.operator th, .operator td, .elements li
 {
 	padding: .125em;
 	text-align: center;
