@@ -8,9 +8,9 @@ function showAll (properties = [], elements = 3)
 	var header = document.createElement("h2")
 	header.innerHTML =
 	properties.join () + " with " + elements + " elements (" + magmas.length + ")"
-	container.append(header)
+	container.appendChild(header)
 	
-	document.getElementsByTagName("body")[0].append(container)
+	document.getElementsByTagName("body")[0].appendChild(container)
 	for (var magma of magmas)
-		container.append(magma.opToHTMLTable())
+		container.appendChild(magma.opToHTMLTable())
 }

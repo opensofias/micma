@@ -124,9 +124,9 @@ class Magma // technically a magma has exactly one operation, i have an arbitrar
 			{
 				var td = document.createElement ("td")
 				td.innerHTML = cell
-				tr.append(td)
+				tr.appendChild(td)
 			}
-			table.append(tr)
+			table.appendChild(tr)
 		}
 		table.className = "operator"
 		return table

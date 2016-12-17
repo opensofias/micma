@@ -12,7 +12,7 @@ class Struc // as in algebraic structure
 
 	opFromString (opString, separators = [","," ",""])
 	{
-		a.push (Struc.splitRecursive (opString, separators))
+		this.a.push (Struc.splitRecursive (opString, separators))
 	}
 
 	static splitRecursive (splitString, separators = [" ",""])
