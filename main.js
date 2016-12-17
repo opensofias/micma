@@ -16,7 +16,7 @@ class Magma // technically a magma has exactly one operation, i have an arbitrar
 
 			return content
 		}
-
+		
 		this.lut[symbol] = splitRecursive (opString, 0)
 
 		this.ops.push (symbol)
@@ -37,6 +37,18 @@ class Magma // technically a magma has exactly one operation, i have an arbitrar
 		}
 
 		return result
+	}
+
+	static benchmarky (limit)
+	{
+		const total = Math.pow(limit, Math.pow(limit,2))
+		var magmaCount = 0
+		var time = new Date()
+		while (magmaCount < total)
+		{
+			magmaCount++
+		}
+		return new Date() - time
 	}
 
 	static binaryOpFromNumber (magmaNumber, limit = 3, symbol = "!")
