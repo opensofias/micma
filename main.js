@@ -39,16 +39,32 @@ class Magma // technically a magma has exactly one operation, i have an arbitrar
 		return result
 	}
 
-	static benchmarky (limit)
+	static filteredBinaryOps (propertyList = [], limit = 3)
 	{
+		var result = []
+		
 		const total = Math.pow(limit, Math.pow(limit,2))
+		
 		var magmaCount = 0
-		var time = new Date()
+
 		while (magmaCount < total)
 		{
+			var magma = Magma.binaryOpFromNumber (magmaCount, limit)
+			
+			var keep = true; var filterCount = 0
+			while (keep && filterCount < propertyList.length)
+			{
+				keep = Query.fromPropertyString
+				(propertyList[filterCount], magma).evaluate ()
+				filterCount++
+			}
+
+			if (keep) result.push (magma)
+
 			magmaCount++
 		}
-		return new Date() - time
+
+		return result
 	}
 
 	static binaryOpFromNumber (magmaNumber, limit = 3, symbol = "!")
@@ -69,7 +85,6 @@ class Magma // technically a magma has exactly one operation, i have an arbitrar
 		}
 
 		return new Magma ({"!":op}, ["!"])
-		
 	}
 
 	static filter (inputMagmas = [], propertyList = [])
