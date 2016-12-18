@@ -2,12 +2,11 @@
 
 class Struc // as in algebraic structure
 {
-	constructor (opArray = []) {this.a = array}
+	constructor (opArray = []) {this.a = opArray}
 
 	static fromString (opString, separators = [","," ",""])
 	{
-		return new Struc
-		(Struc.splitRecursive (opString, separators))
+		return new Struc (Struc.splitRecursive (opString, separators))
 	}
 
 	opFromString (opString, separators = [","," ",""])
@@ -17,12 +16,12 @@ class Struc // as in algebraic structure
 
 	static splitRecursive (splitString, separators = [" ",""])
 	{
-		var content = []
+		var content = []; var depth = 0
 
 		if (depth < separators.length)
 			for (var substring of splitString.split (separators [0]))
 				content.push
-				(splitRecursive (substring, separators.slice(1)))
+				(Struc.splitRecursive (substring, separators.slice(1)))
 		
 		else content = splitString
 
@@ -43,7 +42,7 @@ class Struc // as in algebraic structure
 		if (path.length == 0) return current
 		{
 			return this.lookup
-			(path.slice(0, -1), current [path [0]])
+			(path.slice(1), current [path [0]])
 		}
 	}
 }
@@ -70,7 +69,7 @@ class Term
 	{
 		var progress = 0; var stack = []
 		while (progress < this.a.length)
-			stack = step (struc, stack, progress ++)
+			stack = this.step (struc, stack, progress ++)
 		return stack
 	}
 
