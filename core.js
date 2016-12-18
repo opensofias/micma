@@ -85,27 +85,27 @@ class Term
 
 class Property
 {
-	constructor (propertyArray, quantors, depth)
-	{ this.a = propertyArray; this.quantors = quantors }
+	constructor (propertyArray, quantors, depth = 2)
+	{ this.a = propertyArray; this.quantors = quantors; this.depth = depth }
 
-	static fromString (propertyString, depth)
+	static fromString (propString, depth = 2)
 	{
 		const lower = "abcdefghijklmnopqrstuvwxyz"
 		const upper = lower.toUpperCase()
 		const opSymbols = "*+/-&|%$"
 		
-		var quantCount = 0; var quantifiers = []
+		var quantCount = 0; var quantors = []
 		while (quantCount < lower.length)
 		{
 			if (propString.includes (lower[quantCount]))
-				quantifiers.push (false)
+				quantors.push (false)
 			else if (propString.includes (upper[quantCount]))
-				quantifiers.push (true)
+				quantors.push (true)
 			else break
 			quantCount++
 		}
 
-		var propArray = propertyString.split("")
+		var propArray = propString.split("")
 
 		var opCount = 0; var index
 		while (propString.includes (opSymbols[opCount]))
@@ -115,7 +115,7 @@ class Property
 			else opCount ++
 		}
 
-		
+		return new Property (propArray, quantors, depth)
 	}
 }
 
