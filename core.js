@@ -14,6 +14,28 @@ class Struc // as in algebraic structure
 		this.a.push (Struc.splitRecursive (opString, separators))
 	}
 
+	static fromNum (opNumS, width = 3, depht = 2)
+	{
+		var struc = new Struc ()
+
+		if (Array.isArray (opNumS))
+			for (var opNum of opNum) struc.opFromNum (opNum, width, depht)
+		else struc.opFromNum (opNumS, width, depht)
+
+		return struc
+	}
+
+	opFromNum (opNum, width = 3, depht = 2)
+	{
+		const cellNum = Math.pow(width, depht)
+		var op = []; var cellCount = 0
+
+		function fillCellsRecursive ()
+		{
+
+		}
+	}
+
 	static splitRecursive (splitString, separators = [" ",""])
 	{
 		var content = []; var depth = 0
