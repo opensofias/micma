@@ -1,26 +1,85 @@
-body
+body, button, input
 {
 	font-size: 16pt;
 	font-family: "Source Serif Pro", "Computer Modern", Times, "Times New Roman", serif;
-	margin: 1em 1em 4em 1em;
+	font-weight: 200;
+	outline: none;
 }
 
-h1
+body
 {
+	margin: 1em 1em 4em 1em; color: #000; background-color: #fff;
+}
+
+button
+{
+	background: none;
+	border: none;
+	border-top: 4pt solid #80ff80;
+	border-bottom: 4pt solid #80ff80;
+	padding: 0;
+	margin: 2pt;
+	color: #000;
+	cursor: pointer;
+}
+
+input
+{
+	background: none;
+	border: none;
+	margin: 2pt;
+	border-top: 4pt solid #80ffff;
+	border-bottom: 4pt solid #80ffff;
+}
+
+button:hover
+{
+	background-color: #C0ffC0;
+}
+
+button:active
+{
+	color: #fff;
+	background-color: #000;
+}
+
+strong {font-weight: bolder}
+
+head, title
+{ display: block }
+
+title
+{
+	font-family: "Source Serif Pro", "Computer Modern", Times, "Times New Roman", serif;
 	text-align: right;
 	position: fixed;
-	right: .5em;
-	bottom: .5em;
+	padding: 8pt;
+	right: 0;
+	bottom: 0;
 	margin: 0;
-	font-weight: 300;
-	font-size: 2em;
+	background-color: #fff;
+	color: #000;
+	font-weight: 200;
+	font-size: 24pt;
 	opacity: .5;
 }
 
-h2 { width : 100% }
+h1, h2, h3, h4, h5, h6
+{
+	width: 100%;
+	font-weight: inherit;
+}
+
+h1 {font-size: 2em}
 
 
-.magma
+#magma-generator { display: none }
+
+#magma-generator header { display: flex }
+
+#magma-generator input { flex-grow: 1 }
+
+.listing
 {
 	display: flex;
 	flex-wrap: wrap;
@@ -56,9 +115,10 @@ h2 { width : 100% }
 
 .operator th, .operator td, .elements li
 {
-	padding: .125em;
+	padding: 0;
 	text-align: center;
 	height:1em;
-	min-width:1em;
+	width:1em;
+	line-height: 1em;
 }
 

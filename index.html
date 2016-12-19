@@ -2,14 +2,25 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>micma: minimal abstract algebra playbround</title>
+		<title>micma: abstract algebra playground</title>
 		<link rel="stylesheet" href="style.css">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	</head>
 	<body>
-		<h1>micma</h1>
-		
+		<section id="main-menu">
+			<h1>main menu</h1>
+			<button type="button" onclick="magmaGenerator()">generate magmas</button>
+		</section>
+		<section id="magma-generator">
+			<header>
+				<input type="text" id="generator-input">
+				<button type="button" onclick="generate()">generate</button>
+			</header>
+			<section id="generator-results"></section>
+		</section>
+		<p id="js-notice">note micma requires javascript to function, it only uses it for good (namely math). you can trust us because it's open source. :D</p>
 		<script src="main.js"></script>
+		<script src="ui.js"></script>
 		<script src="library.js"></script>
 		<script src="examples.js"></script>
 	</body>
