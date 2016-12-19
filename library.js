@@ -1,4 +1,6 @@
-m = {}
+"use strict"
+
+var m = {}
 m.list =
 {
 	GF2: ["+01,10","*00,01"],
@@ -50,7 +52,7 @@ m.lib = function (name)
 	return magma
 }
 
-q = {}
+var q = {}
 q.list =
 {
 	
@@ -101,8 +103,6 @@ q.lib = function (name, magma)
 
 function checkAllProps ()
 {
-	
-
 	var string = ""
 	for (magma in m.list)
 	{

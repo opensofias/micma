@@ -1,3 +1,5 @@
+"use strict"
+
 class Magma // technically a magma has exactly one operation, i have an arbitrary number. oh, well..
 {
 	constructor (lut = [], ops = [])
