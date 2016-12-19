@@ -1,6 +1,8 @@
 "use strict"
 
-class Struc // as in algebraic structure
+// this is somewhat more elegant (and maybe faster?) rewrite of main.js. it's not finished yet.
+
+class Struc // as in: algebraic structure. a set of operations defined on a set of operands
 {
 	constructor (opArray = []) {this.a = opArray}
 
@@ -69,7 +71,7 @@ class Struc // as in algebraic structure
 	}
 }
 
-class Term
+class Term // in postfix notation: operators after operand. this makes parentheses and precedence rules unnessecary.
 {
 	constructor (termArray = [], depth = 2)
 	{ this.a = termArray; this.depth = depth }
@@ -105,13 +107,14 @@ class Term
 	}
 }
 
-class Property
+class Property // algebraic property, defined by equalities and logical quantors
 {
 	constructor (propertyArray, quantors, depth = 2)
 	{ this.a = propertyArray; this.quantors = quantors; this.depth = depth }
 
 	static fromString (propString, depth = 2)
 	{
+		// lower case for existance claims, upper case for universal claims. variables are evaluated in alphabeitical order
 		const lower = "abcdefghijklmnopqrstuvwxyz"
 		const upper = lower.toUpperCase()
 		const opSymbols = "*+/-&|%$"
