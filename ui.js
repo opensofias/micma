@@ -25,11 +25,18 @@ function generate ()
 function showAll (properties = [], elements = 3, element = document.getElementsByTagName("body")[0])
 {
 	var magmas = Magma.filter (Magma.allBinaryOps (elements), properties.slice())
-	container = document.createElement("section")
+	var container = document.createElement("section")
 	container.className = "listing"
 	var header = document.createElement("h2")
 	header.innerHTML =
 	properties.join () + " with " + elements + " elements (" + magmas.length + ")"
+	header.onclick = function ()
+	{
+		if (container.classList.contains ("collapsed"))
+			container.classList.remove ("collapsed")
+		else container.classList.add ("collapsed")
+	}
+
 	container.appendChild(header)
 	
 	element.appendChild(container)
