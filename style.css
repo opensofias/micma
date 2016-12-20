@@ -8,10 +8,7 @@ body, button, input, select
 	background-color: #fff
 }
 
-body
-{
-	margin: 1em 1em 4em 1em;
-}
+body { margin: 1em 1em 4em 1em; }
 
 button, input, select
 {
@@ -22,7 +19,6 @@ button, input, select
 
 button
 {
-
 	border-top: 4pt solid #80ff80;
 	border-bottom: 4pt solid #80ff80;
 	cursor: pointer;
@@ -42,10 +38,10 @@ select
 	border-bottom: 4pt solid #ffff80;
 }
 
-button:hover
-{
-	background-color: #C0ffC0;
-}
+button:hover { background-color: #C0ffC0; }
+input:hover { background-color: #C0ffff; }
+select:hover { background-color: #ffffC0; }
+
 
 button:active
 {
@@ -53,10 +49,9 @@ button:active
 	background-color: #000;
 }
 
-strong {font-weight: bolder}
+strong { font-weight: bolder }
 
-head, title
-{ display: block }
+head, title { display: block }
 
 title
 {
@@ -84,11 +79,8 @@ h1, h2, h3, h4, h5, h6
 
 h1 {font-size: 2em}
 
-
-#magma-generator { display: none }
-
+#magma-generator { display: none } /* hidden by default, kinda */
 #magma-generator header { display: flex }
-
 #magma-generator input { flex-grow: 1 }
 
 .listing
@@ -97,21 +89,13 @@ h1 {font-size: 2em}
 	flex-wrap: wrap;
 }
 
-.listing.collapsed > *
-{ display : none }
-
-.listing.collapsed > *:nth-child(1)
-{ display : block }
-
-.operator th, .operator td
-{
-	font-size: 16pt;
-}
+.listing.collapsed > * { display : none }
+.listing.collapsed > *:nth-child(1) { display : block }
 
 .operator
 {
-	margin-right: 1em;
-	margin-bottom: 1em;
+	margin-right: .5em;
+	margin-bottom: .5em;
 }
 
 .elements ol
