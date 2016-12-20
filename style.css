@@ -1,25 +1,30 @@
-body, button, input
+body, button, input, select
 {
 	font-size: 16pt;
 	font-family: "Source Serif Pro", "Computer Modern", Times, "Times New Roman", serif;
 	font-weight: 200;
 	outline: none;
+	color: #000;
+	background-color: #fff
 }
 
 body
 {
-	margin: 1em 1em 4em 1em; color: #000; background-color: #fff;
+	margin: 1em 1em 4em 1em;
+}
+
+button, input, select
+{
+	border: none;
+	padding: 0;
+	margin: 2pt;
 }
 
 button
 {
-	background: none;
-	border: none;
+
 	border-top: 4pt solid #80ff80;
 	border-bottom: 4pt solid #80ff80;
-	padding: 0;
-	margin: 2pt;
-	color: #000;
 	cursor: pointer;
 }
 
@@ -27,9 +32,14 @@ input
 {
 	background: none;
 	border: none;
-	margin: 2pt;
 	border-top: 4pt solid #80ffff;
 	border-bottom: 4pt solid #80ffff;
+}
+
+select
+{
+	border-top: 4pt solid #ffff80;
+	border-bottom: 4pt solid #ffff80;
 }
 
 button:hover
@@ -87,13 +97,13 @@ h1 {font-size: 2em}
 	flex-wrap: wrap;
 }
 
-.listing.collapsed *
+.listing.collapsed > *
 { display : none }
 
-.listing.collapsed *:nth-child(1)
+.listing.collapsed > *:nth-child(1)
 { display : block }
 
-.operator th, .operator tr
+.operator th, .operator td
 {
 	font-size: 16pt;
 }

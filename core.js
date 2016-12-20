@@ -143,4 +143,3 @@ class Property // algebraic property, defined by equalities and logical quantors
 		return new Property (propArray, quantors, depth)
 	}
 }
-

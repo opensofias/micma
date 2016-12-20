@@ -1,9 +1,10 @@
 "use strict"
 
 var body = document.getElementsByTagName("body")[0]
-removeJsNotice ()
+startup ()
+magmaGenerator () // since there is no point to the main menu yet..
 
-function removeJsNotice ()
+function startup ()
 { body.removeChild (document.getElementById("js-notice")) }
 
 function magmaGenerator ()
@@ -17,11 +18,13 @@ function magmaGenerator ()
 	{ if (event.keyCode == 13) generate() })
 }
 
+
+
 function generate ()
 {
 	var query = document.getElementById ("generator-input").value
-
-	showAll(query.split(","), 3, document.getElementById ("generator-results"))
+	var width = Number (document.getElementById ("generator-width").value)
+	showAll(query.split(","), width, document.getElementById ("generator-results"))
 }
 
 function showAll (properties = [], elements = 3, element = document.getElementsByTagName("body")[0])
@@ -30,8 +33,7 @@ function showAll (properties = [], elements = 3, element = document.getElementsB
 	var container = document.createElement("section")
 	container.className = "listing"
 	var header = document.createElement("h2")
-	header.innerHTML =
-	properties.join () + " with " + elements + " elements (" + magmas.length + ")"
+	header.innerHTML = "<strong>" + properties.join () + "</strong> with " + elements + " elements (" + magmas.length + ")"
 	header.onclick = function ()
 	{
 		if (container.classList.contains ("collapsed"))

@@ -13,12 +13,19 @@
 		</section>
 		<section id="magma-generator">
 			<header>
-				<input type="text" id="generator-input">
+				<input type="text" id="generator-input"/>
+				<select id="generator-width" title="number of elements">
+					<option value="3">3 elements</option>
+					<option value="2">2 elements</option>
+					<option value="1">1 elements</option>
+					<option value="0">0 elements</option>
+				</select>
 				<button type="button" onclick="generate()">generate</button>
 			</header>
 			<section id="generator-results"></section>
 		</section>
-		<p id="js-notice">note: micma requires javascript to function, it only uses it for good (namely math). you can trust us because it's open source. :D</p>
+
+		<p id="js-notice">note: micma requires <em>javascript</em> to function, it only uses it for good (namely math). you can trust us because it's open source. :D</p>
 		<script src="main.js"></script>
 		<script src="ui.js"></script>
 		<script src="library.js"></script>

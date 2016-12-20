@@ -76,6 +76,10 @@ q.list =
 	// some words that i made up :P
 	diagonistic:"AA*BB*",
 	idemElement:"aa*a",
+	leftProductiveElement: "ac*B", // weaker versions of latin properties
+	rightProductiveElement: "ac*B",
+	leftUbiquitousElement: "aC*b",
+	rightUbiquitousElement: "aC*b",
 	crossCommutative:"AB*BA+",
 	crossAssociative1:"ABC**AB+C+",
 	crossAssociative2:"ABC++AB*C*",
