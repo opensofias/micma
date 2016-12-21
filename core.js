@@ -8,12 +8,29 @@ class Struc // as in: algebraic structure. a set of operations defined on a set 
 
 	static fromString (opString, separators = [","," ",""])
 	{
-		return new Struc (Struc.splitRecursive (opString, separators))
+		struc = new Struc ()
+		for (var singleOp of opString.split(separators[0]))
+			struc.opFromString (singleOp, separators.slice(1))
+		return struc
 	}
 
 	opFromString (opString, separators = [","," ",""])
 	{
-		this.a.push (Struc.splitRecursive (opString, separators))
+		splitRecursive (splitString, separators)
+		{
+			var content = []; var depth = 0
+
+			if (depth < separators.length)
+				for (var substring of splitString.split (separators [0]))
+					content.push
+					(Struc.splitRecursive (substring, separators.slice(1)))
+			
+			else content = splitString
+
+			return content
+		}
+
+		this.a.push (splitRecursive (opString, separators))
 	}
 
 	static fromNum (opNumS, width = 3, depht = 2)
@@ -38,19 +55,7 @@ class Struc // as in: algebraic structure. a set of operations defined on a set 
 		}
 	}
 
-	static splitRecursive (splitString, separators = [" ",""])
-	{
-		var content = []; var depth = 0
-
-		if (depth < separators.length)
-			for (var substring of splitString.split (separators [0]))
-				content.push
-				(Struc.splitRecursive (substring, separators.slice(1)))
-		
-		else content = splitString
-
-		return content
-	}
+	
 
 	depth (index = 0, current = this.a)
 	{
