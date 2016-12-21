@@ -38,9 +38,9 @@ select
 	border-bottom: 4pt solid #ffff80;
 }
 
-button:hover { background-color: #C0ffC0; }
-input:hover { background-color: #C0ffff; }
-select:hover { background-color: #ffffC0; }
+button:hover { background-color: #E0ffE0; }
+input:hover { background-color: #E0ffff; }
+select:hover { background-color: #ffffE0; }
 
 
 button:active
@@ -107,10 +107,7 @@ h1 {font-size: 2em}
 	display: flex;
 }
 
-.elements .new
-{
-	background-color: #e0fff0;
-}
+.elements .new { background-color: #e0fff0; }
 
 .operator th, .operator td, .elements li
 {
