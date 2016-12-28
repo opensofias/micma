@@ -23,8 +23,7 @@ class Struc // as in: algebraic structure. a set of operations defined on a set 
 			if (depth < separators.length)
 				for (var substring of splitString.split (separators [0]))
 					content.push
-					(Struc.splitRecursive (substring, separators.slice(1)))
-			
+					(Struc.splitRecursive (substring, separators.slice(1)))			
 			else content = splitString
 
 			return content
@@ -46,12 +45,24 @@ class Struc // as in: algebraic structure. a set of operations defined on a set 
 
 	opFromNum (opNum, width = 3, depht = 2)
 	{
-		const cellNum = Math.pow(width, depht)
+		//const cellNum = Math.pow(width, depht)
 		var op = []; var cellCount = 0
 
-		function fillCellsRecursive ()
-		{
 
+
+		function fillCellsRecursive (number, width, depht, offset)
+		{
+			if
+			var array = []
+			
+			var count = offset
+			while (count < depht)
+			{
+				number
+				count++
+			}
+			
+			return array
 		}
 	}
 
