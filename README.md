@@ -4,7 +4,7 @@ abstract algebra playground. has a little ui for generating binary operators/mag
 
 ## property notation
 
-i've come up with a nice notation for writing algebraic properties. variables are quantified by their case (uppercase for univeral, lowercase for existence) in order of the alphabet. 
+i've come up with a nice notation for writing algebraic properties. they are written in postfix (reverse polish) notation. variables are quantified by their case (uppercase for univeral, lowercase for existence) in order of the alphabet. "AB\*BA\*" stands for commutativity, ABC\*\*AB\*C for associativity, aB\*B for a left-neutral element, aB\*a for a left-absorbing element, AA\*A for idempotence, and so on. equality is implied, because so far i only deal with equations. two properties can be combied with by commas (no spaces) to get their meet. (where both properties are satisfied)
 
 ## implemented features
 
