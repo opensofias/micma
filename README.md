@@ -1,46 +1,37 @@
 # micma
 
-abstract algebra playground. somewhat incomplete and so far with no ui whatsoever.
-
-check out examples.js for what it can do.
+abstract algebra playground. has a little ui for generating binary operators/magmas.
 
 ## property notation
 
-i've come up with a pretty cool notation for denoting algebraic properties. with algebraic properies i mean things like commutativity: "for every element A and B in the set, a\*b=b\*a" or, more formally "∀a∀b a\*b=b\*a", doesn't look that bad. but is it *good*?
-
-for one issue 
+i've come up with a nice notation for writing algebraic properties. variables are quantified by their case (uppercase for univeral, lowercase for existence) in order of the alphabet. 
 
 ## implemented features
 
 * define operations
 * evaluate terms
 * match algebraic expressions using equalities and quantors
-* generate all possible
+* generate all possible operators on a given number of elements
 * filter operators using properties as defined in my property notation
-
-## todo
-
-1. make terms and queries more independent of "magmas", parameterize
-2. make the whole thing more functional, i guess
+* little ui for generating magmas
 
 ## roadmap
 
 ### probably
 
-2. discover possible properties by itself (?)
-5. code reduction, cutting all this 4 days old cruft
-6. optimization
-
+1. rewrite: see core.js
+2. optimization: typed arrays and web workers
 
 ### maybe
 
 1. relations: defining properties by more than equalities
-4. find implications between properties (??)
-7. rewrite? TypeScript?
+2. discover possible properties by itself
+3. find implications between properties
+4. TypeScript
 
 ## history
 
-this is a successor of the magmas.js project. https://github.com/opensofias/magmas.js
+this is a successor of the magmas.js project. i plan to renaming it back to magmas.js when core.js is done.
 
 the reason for the fork was a focus on lookup-tables. i suspected this to have a bigger impact then it had so far.
 
