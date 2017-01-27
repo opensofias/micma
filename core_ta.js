@@ -4,86 +4,35 @@
 
 class Struc // as in: algebraic structure. a set of operations defined on a set of operands
 {
-	constructor (opArray = []) {this.a = opArray}
+	constructor	(opArray = [])  {this.a = opArray}
 
-	//get op
-
-	static fromString (opString, separators = [","," ",""])
+	opFromNum (opNum, width, depth)
 	{
-		struc = new Struc ()
-		for (var singleOp of opString.split(separators[0]))
-			struc.opFromString (singleOp, separators.slice(1))
-		return struc
-	}
+		if (width) this.width = width
+		if (depth) this.depth = depth
+		
+		let count = 0
+		op = new Int8Array (Math.pow(this.width, this.depth))
 
-	opFromString (opString, separators = [","," ",""])
-	{
-		splitRecursive (splitString, separators)
+		do
 		{
-			var content = []; var depth = 0
-
-			if (depth < separators.length)
-				for (var substring of splitString.split (separators [0]))
-					content.push
-					(Struc.splitRecursive (substring, separators.slice(1)))			
-			else content = splitString
-
-			return content
+			op[count] = Math.floor((opNum % width))
+			opNum /= width
 		}
+		while (count ++ >= op.length)
 
-		this.a.push (splitRecursive (opString, separators))
+		this.a.push (op)
 	}
 
-	static fromNum (opNumS, width = 3, depht = 2)
+	lookup (path)
 	{
-		var struc = new Struc ()
-
-		if (Array.isArray (opNumS))
-			for (var opNum of opNum) struc.opFromNum (opNum, width, depht)
-		else struc.opFromNum (opNumS, width, depht)
-
-		return struc
-	}
-
-	opFromNum (opNum, width = 3, depht = 2)
-	{
-		//const cellNum = Math.pow(width, depht)
-		var op = []; var cellCount = 0
-
-		function fillCellsRecursive (number, width, depht, offset)
-		{
-			//if 
-			var array = []
-			
-			var count = offset
-			while (count < depht)
-			{
-				number
-				count++
-			}
-			
-			return array
-		}
-	}
-
-	depth (index = 0, current = this.a)
-	{
-		if (Array.isArray(current))
-			return this.depth (0, current [0]) + 1
-		else return 0
-	}
-
-	width (index = 0) { return this.a[index].length }
-
-	lookup (path = [], current = this.a)
-	{
-		if (path.length == 0) return current
-		{
-			return this.lookup
-			(path.slice(1), current [path [0]])
-		}
+		let position = 0
+		path.forEach
+		((num, idx) => position += num * Math.pow(this.width, idx))
 	}
 }
+
+
 
 class Term // in postfix notation: operators after operand. this makes parentheses and precedence rules unnessecary.
 {
@@ -141,7 +90,7 @@ class Property // algebraic property, defined by equalities and logical quantors
 			else if (propString.includes (upper[quantCount]))
 				quantors.push (true)
 			else break
-			quantCount++
+			quantCount ++
 		}
 
 		var propArray = propString.split("")
