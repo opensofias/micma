@@ -4,7 +4,7 @@
 
 class Struc // as in: algebraic structure. a set of operations defined on a set of operands
 {
-	constructor	(opArray = [])  {this.a = opArray}
+	constructor	(opArray = [])  { this.a = opArray }
 
 	opFromNum (opNum, width, depth)
 	{
@@ -24,7 +24,7 @@ class Struc // as in: algebraic structure. a set of operations defined on a set 
 		this.a.push (op)
 	}
 
-	lookup (path)
+	lookup (path) // todo
 	{
 		let position = 0
 		path.forEach
@@ -32,7 +32,10 @@ class Struc // as in: algebraic structure. a set of operations defined on a set 
 	}
 }
 
-
+class Magma4 extends Struc // optimized for 4-element and one binary operator
+{
+	// todo
+}
 
 class Term // in postfix notation: operators after operand. this makes parentheses and precedence rules unnessecary.
 {
@@ -54,7 +57,7 @@ class Term // in postfix notation: operators after operand. this makes parenthes
 
 	evaluate (struc)
 	{
-		var progress = 0; var stack = []
+		let progress = 0; let stack = []
 		while (progress < this.a.length)
 			stack = this.step (struc, stack, progress ++)
 		return stack
@@ -62,15 +65,15 @@ class Term // in postfix notation: operators after operand. this makes parenthes
 
 	isEqual (struc)
 	{
-		var stack = this.evaluate(struc)
-		var result = true
-		for (var element of stack)
+		let stack = this.evaluate(struc)
+		let result = true
+		for (let element of stack)
 			result = result && stack[0] == element
 		return result
 	}
 }
 
-class Property // algebraic property, defined by equalities and logical quantors
+class Property // algebraic property, defined by quanatified equalities
 {
 	constructor (propertyArray, quantors, depth = 2)
 	{ this.a = propertyArray; this.quantors = quantors; this.depth = depth }
@@ -82,22 +85,23 @@ class Property // algebraic property, defined by equalities and logical quantors
 		const upper = lower.toUpperCase()
 		const opSymbols = "*+/-&|%$"
 		
-		var quantCount = 0; var quantors = []
-		while (quantCount < lower.length)
+		let quantCount = 0; let quantors = []
+		
+		do
 		{
 			if (propString.includes (lower[quantCount]))
 				quantors.push (false)
 			else if (propString.includes (upper[quantCount]))
 				quantors.push (true)
 			else break
-			quantCount ++
 		}
+		while (quantCount ++ < lower.length)
 
-		var propArray = propString.split("")
+		let propArray = propString.split("")
 
-		var opCount = 0; var index
+		let opCount = 0; let index
 		while (propString.includes (opSymbols[opCount]))
-		{	
+		{
 			index = propArray.indexOf(opSymbols[opCount])
 			if (index > 0) propArray [index] = -1 - opCount
 			else opCount ++

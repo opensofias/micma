@@ -192,13 +192,6 @@ class Term
 		return result
 	}
 
-	generate (depht, energy, ops)
-	{
-		var terms = [[0, 1]]
-		
-
-
-	}
 }
 
 class Relation // todo: equations probably won't cut it forever
