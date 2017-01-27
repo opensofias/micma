@@ -18,8 +18,6 @@ function magmaGenerator ()
 	{ if (event.keyCode == 13) generate() })
 }
 
-
-
 function generate ()
 {
 	var query = document.getElementById ("generator-input").value
@@ -46,4 +44,13 @@ function showAll (properties = [], elements = 3, element = document.getElementsB
 	element.appendChild(container)
 	for (var magma of magmas)
 		container.appendChild(magma.opToHTMLTable())
+}
+
+function psychedelic (element = document.body)
+{
+	const phi =(1 + Math.sqrt(5)) / 2
+	const num2color = (num) => "hsl(" + ((num * phi * 360) % 360) + ", 100%, 75%)"
+
+	for (var cell of Array.from(element.getElementsByTagName("td")))
+		cell.style["background-color"] = num2color (Number (cell.innerText))
 }
