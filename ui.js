@@ -39,6 +39,11 @@ function showAll (properties = [], elements = 3, element = document.getElementsB
 		else container.classList.add ("collapsed")
 	}
 
+	header.ondblclick = function ()
+	{
+		container.remove()
+	}
+
 	container.appendChild(header)
 	
 	element.appendChild(container)
