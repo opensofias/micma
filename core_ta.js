@@ -8,9 +8,12 @@ class Struc // as in: algebraic structure. a set of operations defined on a set 
 
 	opFromNum (opNum, width, depth)
 	{
-		if (width) this.width = width
-		if (depth) this.depth = depth
-		
+		switch (arguments.length)
+		{
+			case 3: this.depth = depth
+			case 2: this.width = width
+		}
+
 		let count = 0
 		op = new Int8Array (Math.pow(this.width, this.depth))
 
@@ -29,12 +32,17 @@ class Struc // as in: algebraic structure. a set of operations defined on a set 
 		let position = 0
 		path.forEach
 		((num, idx) => position += num * Math.pow(this.width, idx))
+
 	}
 }
 
 class Magma4 extends Struc // optimized for 4-element and one binary operator
 {
-	// todo
+	lookup ([x, y]) // todo
+	{
+		let position = x + y >> 2
+		
+	}
 }
 
 class Term // in postfix notation: operators after operand. this makes parentheses and precedence rules unnessecary.

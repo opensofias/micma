@@ -53,8 +53,8 @@ function showAll (properties = [], elements = 3, element = document.getElementsB
 
 function psychedelic (element = document.body)
 {
-	const phi =(1 + Math.sqrt(5)) / 2
-	const num2color = (num) => "hsl(" + ((num * phi * 360) % 360) + ", 100%, 75%)"
+	const phi = (1 + Math.sqrt(5)) / 2
+	const num2color = (num) => "hsl(" + (- num * phi * 360) + ", 100%, " + (50 + Math.sin(num * 2) * 25) + "%)"
 
 	for (var cell of Array.from(element.getElementsByTagName("td")))
 		cell.style["background-color"] = num2color (Number (cell.innerText))
