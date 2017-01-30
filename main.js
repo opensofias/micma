@@ -79,11 +79,12 @@ class Magma // technically a magma has exactly one operation, i have an arbitrar
 
 		while (cellCount < cellNum)
 		{
-			if (! op [Math.floor (cellCount / limit)]) op [Math.floor(cellCount / limit)] = []
+			// num | 0 should be much faster than Math.floor()
+			if (! op [(cellCount / limit) | 0]) op [(cellCount / limit) | 0] = []
 				
-			op [Math.floor (cellCount / limit)] [cellCount % limit] = 
-			Math.floor ((magmaNumber / Math.pow (limit, cellCount)) % limit)
-			cellCount++
+			op [(cellCount / limit) | 0] [cellCount % limit] = 
+			((magmaNumber / Math.pow (limit, cellCount)) % limit) | 0
+			cellCount ++
 		}
 
 		return new Magma ({"!":op}, ["!"])
