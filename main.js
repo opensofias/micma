@@ -79,7 +79,7 @@ class Magma // technically a magma has exactly one operation, i have an arbitrar
 
 		while (cellCount < cellNum)
 		{
-			// num | 0 should be much faster than Math.floor()
+			// num | 0 should be much faster than Math.floor(), also looks cool
 			if (! op [(cellCount / limit) | 0]) op [(cellCount / limit) | 0] = []
 				
 			op [(cellCount / limit) | 0] [cellCount % limit] = 
@@ -258,8 +258,7 @@ class Query // checks if properties apply
 
 			while (count < this.limit && result == all_not_ex)
 			{
-				var newInput = this.term.input.map (function (variable)
-				{ return variable == replaceThis ? count : variable; })
+				var newInput = this.term.input.map ( variable => variable == replaceThis ? count : variable)
 				var subQuery = new Query
 				(
 					this.quantifiers.slice (1),
