@@ -27,7 +27,7 @@ function generate ()
 
 function showAll (properties = [], elements = 3, element = document.getElementsByTagName("body")[0])
 {
-	var magmas = Magma.filter (Magma.allBinaryOps (elements), properties.slice())
+	var magmas = Magma.filteredBinaryOps (properties, elements)
 	var container = document.createElement("section")
 	container.className = "listing"
 	var header = document.createElement("h2")

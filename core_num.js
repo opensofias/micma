@@ -2,30 +2,48 @@
 
 // using numbers instead of arrays as the "heart" of structures may make them faster, let's see how well this works
 
-const generate = (type, propString, start, stop, ) =>
+const generate = (type, propString, start, stop) =>
 {
 	let count = start
-	const typeClass = [null, null, null, Magma3, Magma4][type]
+	const result = []
+	const typeClass = [null, Magma1, Magma2, Magma3, Magma4] [type]
 	const props =
-	propString.split (" ").map (x => new Property (x))
+	propString.split (" ").map (x => Property.fromString (x, type))
 
 	do
 	{
 		const magma = new typeClass (magmaCount, limit)
 		
-		var keep = true; var filterCount = 0
+		var keep = true; var propCount = 0
 		
-		for (let prop of props)
-		{
-
-		}
+		do keep = props [propCount]
+			while (keep && propCount ++ < props.length)
+		
+		keep && result.push(count)
 	}
 	while (++ count < stop)
+
+	return result
+}
+
+class Magma1
+{
+	constructor (opNum) { this.num = opNum; this.width = 1 }
+
+	lookup () { return 0 }
+}
+
+class Magma2
+{
+	constructor (opNum) { this.num = opNum; this.width = 2 }
+
+	lookup (x, y)
+	{ return (this.num / (1 << (x + y * y))) & 1 }
 }
 
 class Magma3 
 {
-	constructor (opNum) { this.num = opNum}
+	constructor (opNum) { this.num = opNum; this.width = 3 }
 
 	lookup (x, y)
 	{ return (this.num / Math.pow(3, x + y * y * y)) | 0 % 3 }
@@ -33,11 +51,13 @@ class Magma3
 
 class Magma4
 {
-	constructor (opNum) { this.num = opNum }
+	constructor (opNum) { this.num = opNum; this.width = 4 }
 
 	lookup (x, y)
 	{ return (this.num / (1 << ((x + (y << 2)) << 1))) & 3 }
 }
+
+
 
 class Term // in postfix notation: operators after operand. this makes parentheses and precedence rules unnessecary.
 {
@@ -113,7 +133,7 @@ class Property // algebraic property, defined by quantified equalities
 
 		while (quantIndex <= this.quantors.length)
 		{
-			let result 
+			let result
 			term.isEqual ()
 		}
 	}
