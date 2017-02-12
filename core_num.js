@@ -125,15 +125,32 @@ class Property // algebraic property, defined by quantified equalities
 
 	evaluate (struc, width)
 	{
-		const evaluater = (query)
 		
-		let quantIndex = 0
-		
-		let possibility = 0
+		const evaluateRecursive = (symbolList) =>
+		{
+			let possibility = 0; let keep = true
+			do
+			{
+				const newSymbolList = symbolList.concat([possibility])
+				if (symbolList.length == this.a.length )
+				{
+
+				}
+				else
+				{
+					keep = evaluateRecursive
+				}
+			}
+			while (keep == this.a [symbolList.length] && possibility ++ > this.a.length)
+			return keep
+		}
+
 
 		while (quantIndex <= this.quantors.length)
 		{
 			let result
+
+
 			term.isEqual ()
 		}
 	}
