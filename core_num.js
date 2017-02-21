@@ -57,8 +57,6 @@ class Magma4
 	{ return (this.num / (1 << ((x + (y << 2)) << 1))) & 3 }
 }
 
-
-
 class Term // in postfix notation: operators after operand. this makes parentheses and precedence rules unnessecary.
 {
 	constructor (termArray = [])
@@ -91,6 +89,10 @@ class Term // in postfix notation: operators after operand. this makes parenthes
 	}
 }
 
+const lower = "abcdefghijklmnopqrstuvwxyz"
+const upper = lower.toUpperCase()
+const opSymbols = "*+/-&|%$"
+
 class Property // algebraic property, defined by quantified equalities
 {
 	constructor (propertyArray, quantors)
@@ -99,10 +101,7 @@ class Property // algebraic property, defined by quantified equalities
 	static fromString (propString)
 	{
 		// lower case for existance claims, upper case for universal claims. variables are evaluated in alphabeitical order
-		const lower = "abcdefghijklmnopqrstuvwxyz"
-		const upper = lower.toUpperCase()
-		const opSymbols = "*+/-&|%$"
-		
+
 		let quantCount = 0; let quantors = []
 		
 		do
@@ -115,7 +114,7 @@ class Property // algebraic property, defined by quantified equalities
 		}
 		while (quantCount ++ < lower.length)
 
-		let propArray = propString.split("")
+		let propArray = propString.toLowerCase().split("")
 
 		while (propString.includes ("*"))
 			propArray [propArray.indexOf("*")] = -1
@@ -125,34 +124,28 @@ class Property // algebraic property, defined by quantified equalities
 
 	evaluate (struc, width)
 	{
-		
 		const evaluateRecursive = (symbolList) =>
 		{
 			let possibility = 0; let keep = true
 			do
 			{
 				const newSymbolList = symbolList.concat([possibility])
-				if (symbolList.length == this.a.length )
+				if (newSymbolList.length == this.a.length)
 				{
-
+					const currentTerm = this.a.map
+					(symbol => newSymbolList[lower.indexOf (symbol)])
+					
+					keep = new Term (currentTerm).isEqual(struc)
 				}
 				else
 				{
-					keep = evaluateRecursive
+					keep = evaluateRecursive (newSymbolList)
 				}
 			}
-			while (keep == this.a [symbolList.length] && possibility ++ > this.a.length)
+			while (keep == this.quantors [symbolList.length] && possibility ++ < struc.width)
 			return keep
 		}
-
-
-		while (quantIndex <= this.quantors.length)
-		{
-			let result
-
-
-			term.isEqual ()
-		}
+		return 
 	}
 
 }
