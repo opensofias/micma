@@ -2,8 +2,10 @@
 
 // using numbers instead of arrays as the "heart" of structures may make them faster, let's see how well this works
 
-const generate = (type, propString, start, stop) =>
+var generate = (type, propString, start, stop) =>
 {
+	start = start || 0
+	stop = stop || Math.pow(type,Math.pow(type,2))
 	let count = start
 	const result = []
 	const typeClass = [null, Magma1, Magma2, Magma3, Magma4] [type]
@@ -12,9 +14,9 @@ const generate = (type, propString, start, stop) =>
 
 	do
 	{
-		const magma = new typeClass (magmaCount, limit)
+		const magma = new typeClass (count)
 		
-		var keep = true; var propCount = 0
+		let keep = true; let propCount = 0
 		
 		do keep = props [propCount]
 			while (keep && propCount ++ < props.length)
@@ -116,7 +118,7 @@ class Property // algebraic property, defined by quantified equalities
 
 		let propArray = propString.toLowerCase().split("")
 
-		while (propString.includes ("*"))
+		while (propArray.includes ("*"))
 			propArray [propArray.indexOf("*")] = -1
 
 		return new Property (propArray, quantors)
@@ -130,22 +132,18 @@ class Property // algebraic property, defined by quantified equalities
 			do
 			{
 				const newSymbolList = symbolList.concat([possibility])
-				if (newSymbolList.length == this.a.length)
+				if (newSymbolList.length >= this.a.length)
 				{
 					const currentTerm = this.a.map
 					(symbol => newSymbolList[lower.indexOf (symbol)])
 					
 					keep = new Term (currentTerm).isEqual(struc)
 				}
-				else
-				{
-					keep = evaluateRecursive (newSymbolList)
-				}
+				else keep = evaluateRecursive (newSymbolList)
 			}
 			while (keep == this.quantors [symbolList.length] && possibility ++ < struc.width)
 			return keep
 		}
-		return 
+		return evaluateRecursive([])
 	}
-
 }
