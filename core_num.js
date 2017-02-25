@@ -114,12 +114,13 @@ class Property // algebraic property, defined by quantified equalities
 				quantors.push (true)
 			else break
 		}
-		while (quantCount ++ < lower.length)
+		while (quantCount ++ <= lower.length)
 
 		let propArray = propString.toLowerCase().split("")
 
-		while (propArray.includes ("*"))
-			propArray [propArray.indexOf("*")] = -1
+		for (let opSymbol of opSymbols)
+			while (propArray.includes (opSymbol))
+				propArray [propArray.indexOf(opSymbol)] = - 1 - opSymbols.indexOf(opSymbol)
 
 		return new Property (propArray, quantors)
 	}
