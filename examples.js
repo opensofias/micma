@@ -1,9 +1,8 @@
 // todo: new test-routine
 
-
-
 function benchmark (propList, limit = 3)
-{	var time = new Date ()
+{
+	var time = new Date ()
 	var amount = Magma.filteredBinaryOps (propList, limit).length
 	time = new Date () - time
 	var resultstring = "filter@generation: "  + time + "ms, " + amount + "items\n"

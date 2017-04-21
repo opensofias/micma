@@ -5,7 +5,7 @@
 var generate = (type, propString, start, stop) =>
 {
 	start = start || 0
-	stop = stop || Math.pow(type,Math.pow(type,2))
+	stop = stop || Math.pow(type,Math.pow(type,2)) // defaults to highest possible value for type
 	let count = start
 	const result = []
 	const typeClass = [null, Magma1, Magma2, Magma3, Magma4] [type]
