@@ -132,7 +132,7 @@ class Property // algebraic property, defined by quantified equalities
 			let possibility = 0; let keep = true
 			do
 			{
-				const newSymbolList = symbolList.concat([possibility])
+				const newSymbolList = [...symbolList, ...possibility]
 				if (newSymbolList.length >= this.a.length)
 				{
 					const currentTerm = this.a.map

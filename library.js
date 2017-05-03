@@ -55,7 +55,6 @@ m.lib = function (name)
 var q = {}
 q.list =
 {
-	
 	leftNeutralElement:"aB*B",
 	rightNeutralElement:"Ba*B",
 	leftAbsorbingElement:"aB*a",
